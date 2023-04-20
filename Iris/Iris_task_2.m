@@ -6,6 +6,45 @@ x1all = load('class_1','-ascii');
 x2all = load('class_2','-ascii');
 x3all = load('class_3','-ascii');
 % 
+
+%Histograms;
+figure(1);
+subplot(3,1,1);
+histogram(x1all(:,1));
+subplot(3,1,2);
+histogram(x2all(:,1));
+subplot(3,1,3);
+histogram(x3all(:,1));
+sgtitle('Feature 1 for all classes') 
+
+figure(2);
+subplot(3,1,1);
+histogram(x1all(:,2));
+subplot(3,1,2);
+histogram(x2all(:,2));
+subplot(3,1,3);
+histogram(x3all(:,2));
+sgtitle('Feature 2 for all classes')  
+
+figure(3);
+subplot(3,1,1);
+histogram(x1all(:,3));
+subplot(3,1,2);
+histogram(x2all(:,3));
+subplot(3,1,3);
+histogram(x3all(:,3));
+sgtitle('Feature 3 for all classes') 
+
+figure(4);
+subplot(3,1,1);
+histogram(x1all(:,4));
+subplot(3,1,2);
+histogram(x2all(:,4));
+subplot(3,1,3);
+histogram(x3all(:,4));
+sgtitle('Feature 4 for all classes') 
+
+%Parameters that classes are based upon.
 class_Setosa= [x1all(:,1) x1all(:,2) x1all(:,3) x1all(:,4)];
 class_Versicolor= [x2all(:,1) x2all(:,2) x2all(:,3) x2all(:,4)];
 class_Virginica= [x3all(:,1) x3all(:,2) x3all(:,3) x3all(:,4)];
@@ -83,10 +122,10 @@ for i = 1:length(Tot_Testing_Data)
 end
 
 %% Prints and Comparisons
-figure(1);
+figure(5);
 plotconfusion(Correct_Answer_Testing, Measured_Answer_Testing, 'Test set');
 
-figure(2);
+figure(6);
 plotconfusion(Correct_Answer_Training, Measured_Answer_Training, 'Training set');
 
 %% Functions
