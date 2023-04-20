@@ -67,18 +67,27 @@ end
 
 %% Testing linear Classifier
 for i = 1:length(Tot_Training_Data)
-    x = [Tot_Training_Data(k,:)';1];
+    x = [Tot_Training_Data(i,:)';1];
     z = W * x;
     g = sigmoidFunction(z);
     [val, class] = max(g);
     Measured_Answer_Training(class, i) = 1;
 end
 
-
+for i = 1:length(Tot_Testing_Data)
+    x = [Tot_Testing_Data(i,:)';1];
+    z = W * x;
+    g = sigmoidFunction(z);
+    [val, class] = max(g);
+    Measured_Answer_Testing(class, i) = 1;
+end
 
 %% Prints and Comparisons
+figure(1);
+plotconfusion(Correct_Answer_Testing, Measured_Answer_Testing, 'Test set');
 
-
+figure(2);
+plotconfusion(Correct_Answer_Training, Measured_Answer_Training, 'Training set');
 
 %% Functions
 
