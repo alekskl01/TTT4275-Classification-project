@@ -37,6 +37,7 @@ Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 %% Train linear classifier
 W = eye(3, 5);
 Alpha = 0.01;
+
 while true
     
     gradientMSE = 0;
@@ -53,6 +54,12 @@ while true
     if abs(gradientMSE) < 0.2
         break
     end
+end
+
+%Sigmoid function; 
+function y = sigmoidFunction(z)
+    % Compute the sigmoid function
+    y = 1./(1 + exp(-z));
 end
 
 %% Testing linear Classifier
