@@ -1,4 +1,4 @@
-%% Iris - Task 1
+%% Iris - Task 2
 % By Sigurd von Brandis and Aleksander Klund
 
 %% Load the data
