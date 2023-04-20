@@ -5,15 +5,15 @@
 x1all = load('class_1','-ascii');
 x2all = load('class_2','-ascii');
 x3all = load('class_3','-ascii');
+% 
+class_Setosa= [x1all(:,1) x1all(:,2) x1all(:,3) x1all(:,4)];
+class_Versicolor= [x2all(:,1) x2all(:,2) x2all(:,3) x2all(:,4)];
+class_Virginica= [x3all(:,1) x3all(:,2) x3all(:,3) x3all(:,4)];
 
-class_Setosa= [x1all(:,4) x1all(:,1) x1all(:,2)];
-class_Versicolor= [x2all(:,4) x2all(:,1) x2all(:,2)];
-class_Virginica= [x3all(:,4) x3all(:,1) x3all(:,2)];
-
-%class_Setosa= [x1all(:,3) x1all(:,4)];
-%class_Versicolor= [x2all(:,3) x2all(:,4)];
-%class_Virginica= [x3all(:,3) x3all(:,4)];
-
+% class_Setosa= [x1all(:,2)];
+% class_Versicolor= [x2all(:,2)];
+% class_Virginica= [x3all(:,2)];
+% % 
 % class_Setosa= [x1all(:,4)];
 % class_Versicolor= [x2all(:,4)];
 % class_Virginica= [x3all(:,4)];
