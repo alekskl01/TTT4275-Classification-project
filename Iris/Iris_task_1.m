@@ -41,7 +41,7 @@ Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]) kron(ones(1,N_Trai
 
 Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0]) kron(ones(1,N_Testing),[0; 1; 0]) kron(ones(1,N_Testing),[0; 0; 1])];
 
-Measured_Answer_Taining = zeros(size(Correct_Answer_Training));
+Measured_Answer_Training = zeros(size(Correct_Answer_Training));
 Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 
 %% Train linear classifier
@@ -72,5 +72,14 @@ function y = sigmoidFunction(z)
 end
 
 %% Testing linear Classifier
+for i = 1:length(Tot_Training_Data)
+    x = [Tot_Training_Data(k,:)';1];
+    z = W * x;
+    g = sigmoidFunction(z);
+    [val, class] = max(g);
+    Measured_Answer_Training(class, i) = 1;
+end
+
+
 
 %% Prints and Comparisons
