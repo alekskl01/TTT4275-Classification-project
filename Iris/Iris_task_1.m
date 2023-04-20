@@ -21,8 +21,8 @@ class_Virginica= [x3all(:,1) x3all(:,2) x3all(:,3) x3all(:,4)];
 [Ntot,dimx] = size(class_Setosa);
 
 %% Make Training and test sets
-TrainingSetLength = 1:30;
-TestSetLength = 31:50;
+TrainingSetLength = 21:50;
+TestSetLength = 1:20;
 N_Training = length(TrainingSetLength);
 N_Testing = length(TestSetLength);
 
