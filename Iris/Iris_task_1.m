@@ -10,32 +10,32 @@ class_Virginica = load('class_3');
 TrainingSetLength = 1:30;
 TestSetLength = 31:50;
 N_Training = length(TrainingSetLength);
-N_Test = length(TestSetLength);
+N_Testing = length(TestSetLength);
 
 %% Make Training Data
-Tot_Training_Data = [class_Setosa{TrainingSetLength,:};
-                     class_Versicolor{TrainingSetLength,:};
-                     class_Virginica{TrainingSetLength,:}];
+Tot_Training_Data = [class_Setosa(TrainingSetLength,:);
+                     class_Versicolor(TrainingSetLength,:);
+                     class_Virginica(TrainingSetLength,:)];
 
 %% Make Test Data
-Tot_Testing_Data = [class_Setosa{TestSetLength,:};
-                    class_Versicolor{TestSetLength,:};
-                    class_Versicolor{TestSetLength,:}];
+Tot_Testing_Data = [class_Setosa(TestSetLength,:);
+                    class_Versicolor(TestSetLength,:);
+                    class_Versicolor(TestSetLength,:)];
 
 %% Make matrices used in confusion matrix
-Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0])
-                           kron(ones(1,N_Training),[0; 1; 0]) 
+Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]);
+                           kron(ones(1,N_Training),[0; 1; 0]); 
                            kron(ones(1,N_Training),[0; 0; 1])];
 
-Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0])
-                          kron(ones(1,N_Testing),[0; 1; 0]) 
+Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0]);
+                          kron(ones(1,N_Testing),[0; 1; 0]); 
                           kron(ones(1,N_Testing),[0; 0; 1])];
 
 Measured_Answer_Taining = zeros(size(Correct_Answer_Training));
 Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 
 %% Train linear classifier
-W = eye(3);
+W = eye(3, 5);
 Alpha = 0.01;
 while true
     
