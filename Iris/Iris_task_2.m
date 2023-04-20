@@ -1,19 +1,19 @@
-%% Iris - Task 2
+%% Iris - Task 1
 % By Sigurd von Brandis and Aleksander Klund
 
 %% Load the data
 x1all = load('class_1','-ascii');
 x2all = load('class_2','-ascii');
 x3all = load('class_3','-ascii');
+% 
+class_Setosa= [x1all(:,1) x1all(:,2) x1all(:,3) x1all(:,4)];
+class_Versicolor= [x2all(:,1) x2all(:,2) x2all(:,3) x2all(:,4)];
+class_Virginica= [x3all(:,1) x3all(:,2) x3all(:,3) x3all(:,4)];
 
-class_Setosa= [x1all(:,4) x1all(:,1) x1all(:,2)];
-class_Versicolor= [x2all(:,4) x2all(:,1) x2all(:,2)];
-class_Virginica= [x3all(:,4) x3all(:,1) x3all(:,2)];
-
-%class_Setosa= [x1all(:,3) x1all(:,4)];
-%class_Versicolor= [x2all(:,3) x2all(:,4)];
-%class_Virginica= [x3all(:,3) x3all(:,4)];
-
+% class_Setosa= [x1all(:,2)];
+% class_Versicolor= [x2all(:,2)];
+% class_Virginica= [x3all(:,2)];
+% % 
 % class_Setosa= [x1all(:,4)];
 % class_Versicolor= [x2all(:,4)];
 % class_Virginica= [x3all(:,4)];
@@ -21,8 +21,8 @@ class_Virginica= [x3all(:,4) x3all(:,1) x3all(:,2)];
 [Ntot,dimx] = size(class_Setosa);
 
 %% Make Training and test sets
-TrainingSetLength = 1:30;
-TestSetLength = 31:50;
+TrainingSetLength = 21:50;
+TestSetLength = 1:20;
 N_Training = length(TrainingSetLength);
 N_Testing = length(TestSetLength);
 
