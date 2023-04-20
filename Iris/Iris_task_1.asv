@@ -1,3 +1,5 @@
+%% Iris - Task 1
+% By Sigurd von Brandis and Aleksander KLund
 
 %% Load the data
 class_Setosa = load('class_1');
@@ -11,14 +13,14 @@ N_Training = length(TrainingSetLength);
 N_Test = length(TestSetLength);
 
 %% Make Training Data
-Tot_Training_Data = [class_Setosa{TrainingSetLenght,:};
-                     class_Versicolor{TrainingSetLength,:};
-                     class_Virginica{TrainingSetLength,:}];
+Tot_Training_Data = [class_Setosa(TrainingSetLength,:);
+                     class_Versicolor(TrainingSetLength,:);
+                     class_Virginica(TrainingSetLength,:)]
 
 %% Make Test Data
-Tot_Testing_Data = [class_Setosa{TestSetLength,:};
-                    class_Versicolor{TestSetLength,:};
-                    class_Versicolor{TestSetLength,:}];
+Tot_Testing_Data = [class_Setosa(TestSetLength,:);
+                    class_Versicolor(TestSetLength,:);
+                    class_Versicolor(TestSetLength,:)];
 
 %% Make matrices used in confusion matrix
 Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]),
@@ -38,15 +40,15 @@ Alpha = 0.01;
 while true {
     
     gradientMSE = 0
-    for k = 1:N_Training {
+    for k = ... {
         W = W - Alpha*gradientMSE
-         xk = [Tot_Training]
-         gk = sigmoid;
-         tk = ;
+         xk = [...]
+         gk = sigmoid(W*xk);
+         tk = ...;
          gradientMSE = gradientMSE + 0.5*(gk-tk).'*(gk-tk);
     }
     
-    if {
+    if ... {
         break
     }
 }
