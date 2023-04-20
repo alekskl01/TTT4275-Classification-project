@@ -2,9 +2,9 @@
 % By Sigurd von Brandis and Aleksander KLund
 
 %% Load the data
-class_Setosa_all = load('class_1','-ascii');
-class_Versicolor_all = load('class_2','-ascii');
-class_Virginica_all = load('class_3','-ascii');
+x1all = load('class_1','-ascii');
+x2all = load('class_2','-ascii');
+x3all = load('class_3','-ascii');
 
 class_Setosa= [x1all(:,4) x1all(:,1) x1all(:,2)];
 class_Versicolor= [x2all(:,4) x2all(:,1) x2all(:,2)];
@@ -18,7 +18,7 @@ class_Virginica= [x3all(:,4) x3all(:,1) x3all(:,2)];
 % class_Versicolor= [x2all(:,4)];
 % class_Virginica= [x3all(:,4)];
 
-[Ntot,dimx] = size(x1);
+[Ntot,dimx] = size(class_Setosa);
 
 %% Make Training and test sets
 TrainingSetLength = 1:30;
@@ -37,16 +37,12 @@ Tot_Testing_Data = [class_Setosa(TestSetLength,:);
                     class_Versicolor(TestSetLength,:)];
 
 %% Make matrices used in confusion matrix
-% Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]);
-%                            kron(ones(1,N_Training),[0; 1; 0]); 
-%                            kron(ones(1,N_Training),[0; 0; 1])];
-% 
-% Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0]);
-%                           kron(ones(1,N_Testing),[0; 1; 0]); 
-%                           kron(ones(1,N_Testing),[0; 0; 1])];
-% 
-% Measured_Answer_Taining = zeros(size(Correct_Answer_Training));
-% Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
+Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]) kron(ones(1,N_Training),[0; 1; 0]) kron(ones(1,N_Training),[0; 0; 1])]
+
+Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0]) kron(ones(1,N_Testing),[0; 1; 0]) kron(ones(1,N_Testing),[0; 0; 1])];
+
+Measured_Answer_Taining = zeros(size(Correct_Answer_Training));
+Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 
 %% Train linear classifier
 W = eye(3, dimx+1);
@@ -60,7 +56,7 @@ while true
          xk = [Tot_Training_Data(k,:)'; 1];
          z = W * xk;
          gk = sigmoidFunction(z);
-         tk = Correct_Answer_Training;
+         tk = Correct_Answer_Training(:,k);
          gradientMSE = gradientMSE + 0.5*(gk-tk).'*(gk-tk);
     end
     
