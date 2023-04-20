@@ -65,12 +65,6 @@ while true
     end
 end
 
-%Sigmoid function; 
-function y = sigmoidFunction(z)
-    % Compute the sigmoid function
-    y = 1./(1 + exp(-z));
-end
-
 %% Testing linear Classifier
 for i = 1:length(Tot_Training_Data)
     x = [Tot_Training_Data(k,:)';1];
@@ -83,3 +77,13 @@ end
 
 
 %% Prints and Comparisons
+
+
+
+%% Functions
+
+%Sigmoid function; 
+function y = sigmoidFunction(z)
+    % Compute the sigmoid function
+    y = 1./(1 + exp(-z));
+end
