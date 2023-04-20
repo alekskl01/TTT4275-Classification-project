@@ -37,7 +37,7 @@ Tot_Testing_Data = [class_Setosa(TestSetLength,:);
                     class_Versicolor(TestSetLength,:)];
 
 %% Make matrices used in confusion matrix
-Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]) kron(ones(1,N_Training),[0; 1; 0]) kron(ones(1,N_Training),[0; 0; 1])]
+Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]) kron(ones(1,N_Training),[0; 1; 0]) kron(ones(1,N_Training),[0; 0; 1])];
 
 Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0]) kron(ones(1,N_Testing),[0; 1; 0]) kron(ones(1,N_Testing),[0; 0; 1])];
 
@@ -47,21 +47,19 @@ Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 %% Train linear classifier
 W = eye(3, dimx+1);
 Alpha = 0.01;
+gradientMSE = 0;
 
 while true
-    
     gradientMSE = 0;
-
     for k = 1:3*N_Training
          xk = [Tot_Training_Data(k,:)'; 1];
          z = W * xk;
          gk = sigmoidFunction(z);
          tk = Correct_Answer_Training(:,k);
-         gradientMSE = gradientMSE + 0.5*(gk-tk).'*(gk-tk);
+         gradientMSE = gradientMSE + ((gk-tk).*gk.*(1-gk))*xk';
     end
     
     W = W - Alpha*gradientMSE;
-    
     if abs(gradientMSE) < 0.2
         break
     end
