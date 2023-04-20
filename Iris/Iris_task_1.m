@@ -57,8 +57,9 @@ while true
     gradientMSE = 0;
 
     for k = 1:3*N_Training
-         xk = [Tot_Training_Data(k,:)'; 1]
-         gk = sigmoid(W*xk);
+         xk = [Tot_Training_Data(k,:)'; 1];
+         z = W * xk;
+         gk = sigmoidFunction(z);
          tk = Correct_Answer_Training;
          gradientMSE = gradientMSE + 0.5*(gk-tk).'*(gk-tk);
     end
