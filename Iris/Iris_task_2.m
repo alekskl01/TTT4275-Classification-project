@@ -3,9 +3,9 @@
 close all;
 
 %% Load the data
-x1all = load('class_1','-ascii');
-x2all = load('class_2','-ascii');
-x3all = load('class_3','-ascii');
+x1all = load('class_1');
+x2all = load('class_2');
+x3all = load('class_3');
 % 
 
 %Histograms;
@@ -46,17 +46,21 @@ x3all = load('class_3','-ascii');
 % sgtitle('Feature 4 for all classes') 
 
 %Parameters that classes are based upon.
-class_Setosa= [x1all(:,3)];
-class_Versicolor= [x2all(:,3)];
-class_Virginica= [x3all(:,3)];
+% class_Setosa= [x1all(:,1) x1all(:,2) x1all(:,3) x1all(:,4)];
+% class_Versicolor= [x2all(:,1) x2all(:,2) x2all(:,3) x2all(:,4)];
+% class_Virginica= [x3all(:,1) x3all(:,2) x3all(:,3) x3all(:,4)];
 
-% class_Setosa= [x1all(:,2)];
-% class_Versicolor= [x2all(:,2)];
-% class_Virginica= [x3all(:,2)];
-% % 
-% class_Setosa= [x1all(:,4)];
-% class_Versicolor= [x2all(:,4)];
-% class_Virginica= [x3all(:,4)];
+% class_Setosa= [x1all(:,2), x1all(:,3), x1all(:,4)];
+% class_Versicolor= [x2all(:,2), x2all(:,3), x2all(:,4)];
+% class_Virginica= [x3all(:,2), x3all(:,3), x3all(:,4)];
+
+% class_Setosa= [x1all(:,3), x1all(:,4)];
+% class_Versicolor= [x2all(:,3), x2all(:,4)];
+% class_Virginica= [x3all(:,3), x3all(:,4)];
+
+class_Setosa= [x1all(:,4)];
+class_Versicolor= [x2all(:,4)];
+class_Virginica= [x3all(:,4)];
 
 [Ntot,dimx] = size(class_Setosa);
 
@@ -79,20 +83,19 @@ Tot_Testing_Data = [class_Setosa(TestSetLength,:);
                     class_Versicolor(TestSetLength,:)];
 
 %% Make matrices used in confusion matrix
-Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]) kron(ones(1,N_Training),[0; 1; 0]) kron(ones(1,N_Training),[0; 0; 1])];
+Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]), kron(ones(1,N_Training),[0; 1; 0]), kron(ones(1,N_Training),[0; 0; 1])];
 
-Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0]) kron(ones(1,N_Testing),[0; 1; 0]) kron(ones(1,N_Testing),[0; 0; 1])];
+Correct_Answer_Testing = [kron(ones(1,N_Testing),[1; 0; 0]), kron(ones(1,N_Testing),[0; 1; 0]), kron(ones(1,N_Testing),[0; 0; 1])];
 
 Measured_Answer_Training = zeros(size(Correct_Answer_Training));
 Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 
 %% Train linear classifier
 W = eye(3, dimx+1);
-Alpha = 0.001;
-gradientMSE = 0;
+Alpha = 0.005;
 iterations = 0;
 
-while iterations < 1000000
+while iterations < 300
     gradientMSE = 0;
     for k = 1:3*N_Training
          xk = [Tot_Training_Data(k,:)'; 1];
@@ -103,10 +106,8 @@ while iterations < 1000000
     end
     
     W = W - Alpha*gradientMSE;
+
     iterations = iterations + 1;
-    if abs(gradientMSE) < 0.01
-        break
-    end
 end
 
 %% Testing linear Classifier
