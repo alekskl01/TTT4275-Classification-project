@@ -11,37 +11,49 @@ x3all = load('class_3','-ascii');
 figure(1);
 subplot(3,1,1);
 histogram(x1all(:,1), 6);
+ylabel('class 1')
 subplot(3,1,2);
 histogram(x2all(:,1), 6);
+ylabel('class 2')
 subplot(3,1,3);
 histogram(x3all(:,1), 6);
-sgtitle('Feature 1 for all classes') 
+ylabel('class 3')
+sgtitle('Feature 1 for all classes')
 
 figure(2);
 subplot(3,1,1);
 histogram(x1all(:,2), 6);
+ylabel('class 1')
 subplot(3,1,2);
 histogram(x2all(:,2), 6);
+ylabel('class 2')
 subplot(3,1,3);
 histogram(x3all(:,2), 6);
+ylabel('class 3')
 sgtitle('Feature 2 for all classes')  
 
 figure(3);
 subplot(3,1,1);
 histogram(x1all(:,3), 6);
+ylabel('class 1')
 subplot(3,1,2);
 histogram(x2all(:,3), 6);
+ylabel('class 2')
 subplot(3,1,3);
 histogram(x3all(:,3), 6);
+ylabel('class 3')
 sgtitle('Feature 3 for all classes') 
 
 figure(4);
 subplot(3,1,1);
 histogram(x1all(:,4), 6);
+ylabel('class 1')
 subplot(3,1,2);
 histogram(x2all(:,4), 6);
+ylabel('class 2')
 subplot(3,1,3);
 histogram(x3all(:,4), 6);
+ylabel('class 3')
 sgtitle('Feature 4 for all classes') 
 
 %Parameters that classes are based upon.
