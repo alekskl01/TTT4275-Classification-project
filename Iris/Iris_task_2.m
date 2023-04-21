@@ -9,46 +9,46 @@ x3all = load('class_3','-ascii');
 % 
 
 %Histograms;
-figure(1)
-histogram(x1all(:,1), 10);
-hold on;
-histogram(x2all(:,1), 10);
-hold on;
-histogram(x3all(:,1), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 1 for all classes')
-
-figure(2);
-histogram(x1all(:,2), 10);
-hold on;
-histogram(x2all(:,2), 10);
-hold on;
-histogram(x3all(:,2), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 2 for all classes')  
-
-figure(3);
-histogram(x1all(:,3), 10);
-hold on;
-histogram(x2all(:,3), 10);
-hold on;
-histogram(x3all(:,3), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 3 for all classes') 
-
-figure(4);
-histogram(x1all(:,4), 10);
-hold on;
-histogram(x2all(:,4), 10);
-hold on;
-histogram(x3all(:,4), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 4 for all classes') 
+% figure(1)
+% histogram(x1all(:,1), 10);
+% hold on;
+% histogram(x2all(:,1), 10);
+% hold on;
+% histogram(x3all(:,1), 10);
+% legend('class 1', 'class 2', 'class 3');
+% sgtitle('Feature 1 for all classes')
+% 
+% figure(2);
+% histogram(x1all(:,2), 10);
+% hold on;
+% histogram(x2all(:,2), 10);
+% hold on;
+% histogram(x3all(:,2), 10);
+% legend('class 1', 'class 2', 'class 3');
+% sgtitle('Feature 2 for all classes')  
+% 
+% figure(3);
+% histogram(x1all(:,3), 10);
+% hold on;
+% histogram(x2all(:,3), 10);
+% hold on;
+% histogram(x3all(:,3), 10);
+% legend('class 1', 'class 2', 'class 3');
+% sgtitle('Feature 3 for all classes') 
+% 
+% figure(4);
+% histogram(x1all(:,4), 10);
+% hold on;
+% histogram(x2all(:,4), 10);
+% hold on;
+% histogram(x3all(:,4), 10);
+% legend('class 1', 'class 2', 'class 3');
+% sgtitle('Feature 4 for all classes') 
 
 %Parameters that classes are based upon.
-class_Setosa= [x1all(:,1) x1all(:,3) x1all(:,4)];
-class_Versicolor= [x2all(:,1) x2all(:,3) x2all(:,4)];
-class_Virginica= [x3all(:,1) x3all(:,3) x3all(:,4)];
+class_Setosa= [x1all(:,3)];
+class_Versicolor= [x2all(:,3)];
+class_Virginica= [x3all(:,3)];
 
 % class_Setosa= [x1all(:,2)];
 % class_Versicolor= [x2all(:,2)];
@@ -88,10 +88,11 @@ Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 
 %% Train linear classifier
 W = eye(3, dimx+1);
-Alpha = 0.01;
+Alpha = 0.001;
 gradientMSE = 0;
+iterations = 0;
 
-while true
+while iterations < 1000000
     gradientMSE = 0;
     for k = 1:3*N_Training
          xk = [Tot_Training_Data(k,:)'; 1];
@@ -102,6 +103,7 @@ while true
     end
     
     W = W - Alpha*gradientMSE;
+    iterations = iterations + 1;
     if abs(gradientMSE) < 0.01
         break
     end
