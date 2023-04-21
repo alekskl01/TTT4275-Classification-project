@@ -8,7 +8,7 @@ x2all = load('class_2');
 x3all = load('class_3');
 % 
 
-%Histograms;
+% % Histograms;
 % figure(1)
 % histogram(x1all(:,1), 10);
 % hold on;
@@ -46,13 +46,13 @@ x3all = load('class_3');
 % sgtitle('Feature 4 for all classes') 
 
 %Parameters that classes are based upon.
-% class_Setosa= [x1all(:,1) x1all(:,2) x1all(:,3) x1all(:,4)];
-% class_Versicolor= [x2all(:,1) x2all(:,2) x2all(:,3) x2all(:,4)];
-% class_Virginica= [x3all(:,1) x3all(:,2) x3all(:,3) x3all(:,4)];
+% class_Setosa= x1all;
+% class_Versicolor= x2all;
+% class_Virginica= x3all;
 
-% class_Setosa= [x1all(:,2), x1all(:,3), x1all(:,4)];
-% class_Versicolor= [x2all(:,2), x2all(:,3), x2all(:,4)];
-% class_Virginica= [x3all(:,2), x3all(:,3), x3all(:,4)];
+% class_Setosa= [x1all(:,1), x1all(:,3), x1all(:,4)];
+% class_Versicolor= [x2all(:,1), x2all(:,3), x2all(:,4)];
+% class_Virginica= [x3all(:,1), x3all(:,3), x3all(:,4)];
 
 % class_Setosa= [x1all(:,3), x1all(:,4)];
 % class_Versicolor= [x2all(:,3), x2all(:,4)];
@@ -80,7 +80,7 @@ Tot_Training_Data = [class_Setosa(TrainingSetLength,:);
 %% Make Test Data
 Tot_Testing_Data = [class_Setosa(TestSetLength,:);
                     class_Versicolor(TestSetLength,:);
-                    class_Versicolor(TestSetLength,:)];
+                    class_Virginica(TestSetLength,:)];
 
 %% Make matrices used in confusion matrix
 Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]), kron(ones(1,N_Training),[0; 1; 0]), kron(ones(1,N_Training),[0; 0; 1])];
@@ -92,10 +92,10 @@ Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 
 %% Train linear classifier
 W = eye(3, dimx+1);
-Alpha = 0.005;
+Alpha = 0.03;
 iterations = 0;
 
-while iterations < 300
+while iterations < 50000
     gradientMSE = 0;
     for k = 1:3*N_Training
          xk = [Tot_Training_Data(k,:)'; 1];

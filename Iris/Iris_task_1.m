@@ -21,8 +21,10 @@ class_Virginica= [x3all(:,1) x3all(:,2) x3all(:,3) x3all(:,4)];
 [Ntot,dimx] = size(class_Setosa);
 
 %% Make Training and test sets
-TrainingSetLength = 21:50;
-TestSetLength = 1:20;
+%TrainingSetLength = 21:50;
+%TestSetLength = 1:20;
+TrainingSetLength = 1:30;
+TestSetLength = 31:50;
 N_Training = length(TrainingSetLength);
 N_Testing = length(TestSetLength);
 
@@ -34,7 +36,7 @@ Tot_Training_Data = [class_Setosa(TrainingSetLength,:);
 %% Make Test Data
 Tot_Testing_Data = [class_Setosa(TestSetLength,:);
                     class_Versicolor(TestSetLength,:);
-                    class_Versicolor(TestSetLength,:)];
+                    class_Virginica(TestSetLength,:)];
 
 %% Make matrices used in confusion matrix
 Correct_Answer_Training = [kron(ones(1,N_Training),[1; 0; 0]) kron(ones(1,N_Training),[0; 1; 0]) kron(ones(1,N_Training),[0; 0; 1])];
