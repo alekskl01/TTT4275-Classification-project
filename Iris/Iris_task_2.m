@@ -1,5 +1,6 @@
 %% Iris - Task 1
 % By Sigurd von Brandis and Aleksander Klund
+close all;
 
 %% Load the data
 x1all = load('class_1','-ascii');
@@ -8,52 +9,40 @@ x3all = load('class_3','-ascii');
 % 
 
 %Histograms;
-figure(1);
-subplot(3,1,1);
-histogram(x1all(:,1), 6);
-ylabel('class 1')
-subplot(3,1,2);
-histogram(x2all(:,1), 6);
-ylabel('class 2')
-subplot(3,1,3);
-histogram(x3all(:,1), 6);
-ylabel('class 3')
+figure(1)
+histogram(x1all(:,1), 10);
+hold on;
+histogram(x2all(:,1), 10);
+hold on;
+histogram(x3all(:,1), 10);
+legend('class 1', 'class 2', 'class 3');
 sgtitle('Feature 1 for all classes')
 
 figure(2);
-subplot(3,1,1);
-histogram(x1all(:,2), 6);
-ylabel('class 1')
-subplot(3,1,2);
-histogram(x2all(:,2), 6);
-ylabel('class 2')
-subplot(3,1,3);
-histogram(x3all(:,2), 6);
-ylabel('class 3')
+histogram(x1all(:,2), 10);
+hold on;
+histogram(x2all(:,2), 10);
+hold on;
+histogram(x3all(:,2), 10);
+legend('class 1', 'class 2', 'class 3');
 sgtitle('Feature 2 for all classes')  
 
 figure(3);
-subplot(3,1,1);
-histogram(x1all(:,3), 6);
-ylabel('class 1')
-subplot(3,1,2);
-histogram(x2all(:,3), 6);
-ylabel('class 2')
-subplot(3,1,3);
-histogram(x3all(:,3), 6);
-ylabel('class 3')
+histogram(x1all(:,3), 10);
+hold on;
+histogram(x2all(:,3), 10);
+hold on;
+histogram(x3all(:,3), 10);
+legend('class 1', 'class 2', 'class 3');
 sgtitle('Feature 3 for all classes') 
 
 figure(4);
-subplot(3,1,1);
-histogram(x1all(:,4), 6);
-ylabel('class 1')
-subplot(3,1,2);
-histogram(x2all(:,4), 6);
-ylabel('class 2')
-subplot(3,1,3);
-histogram(x3all(:,4), 6);
-ylabel('class 3')
+histogram(x1all(:,4), 10);
+hold on;
+histogram(x2all(:,4), 10);
+hold on;
+histogram(x3all(:,4), 10);
+legend('class 1', 'class 2', 'class 3');
 sgtitle('Feature 4 for all classes') 
 
 %Parameters that classes are based upon.
