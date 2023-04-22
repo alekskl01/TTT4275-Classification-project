@@ -49,7 +49,7 @@ x3all = load('class_3');
 % class_Setosa= x1all;
 % class_Versicolor= x2all;
 % class_Virginica= x3all;
-
+% 
 % class_Setosa= [x1all(:,1), x1all(:,3), x1all(:,4)];
 % class_Versicolor= [x2all(:,1), x2all(:,3), x2all(:,4)];
 % class_Virginica= [x3all(:,1), x3all(:,3), x3all(:,4)];
@@ -92,10 +92,10 @@ Measured_Answer_Testing = zeros(size(Correct_Answer_Testing));
 
 %% Train linear classifier
 W = eye(3, dimx+1);
-Alpha = 0.03;
+Alpha = 0.005;
 iterations = 0;
 
-while iterations < 50000
+while iterations < 30000
     gradientMSE = 0;
     for k = 1:3*N_Training
          xk = [Tot_Training_Data(k,:)'; 1];
