@@ -7,6 +7,7 @@ targets = zeros(10, num_test);
 num_chuncks = 60;
 chunck_size = 60000/num_chuncks;
 
+%Classifying
 for k = 1:num_test
     targets(testlab(k)+1, k) = 1;
     test_sample = testv(k,:);
@@ -17,11 +18,14 @@ for k = 1:num_test
         [Min_dist, local_index] = min(distances,[],1);
         global_index = chunck_size*i + local_index;
         closest_from_chuncks(i,:) = [Min_dist global_index];
-
     end
     [~,I] = min(closest_from_chuncks(:,1),[],1);
     closest_distance_index = closest_from_chuncks(I,2);
     outputs(trainlab(closest_distance_index)+1, k) = 1;
 end
 
+%Confusion matrix and error rate
+
+figure(1)
+plotconfusion(targets, outputs, 'Classification result');
 
