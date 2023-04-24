@@ -16,7 +16,7 @@ for k = 1:num_test
         trainv_chunck = trainv((chunck_size*(i-1)+1):chunck_size*i,:);
         distances =  dist(trainv_chunck, test_sample');
         [Min_dist, local_index] = min(distances,[],1);
-        global_index = chunck_size*i + local_index;
+        global_index = chunck_size*(i-1) + local_index;
         closest_from_chuncks(i,:) = [Min_dist global_index];
     end
     [~,I] = min(closest_from_chuncks(:,1),[],1);
