@@ -2,8 +2,8 @@
 % By Sigurd von Brandis and Aleksander Klund
 
 % Perform k-means clustering on the training data
-M = 10; % specify the number of clusters for k-means
-[idxi, Ci] = kmeans(trainv, M);
+M = 64; % specify the number of clusters for k-means
+[idx, C] = kmeans(trainv, M);
 
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
@@ -15,10 +15,10 @@ for k = 1:num_test
     test_sample = testv(k,:);
     
     % Find the closest centroid from the k-means clustering
-    closest_distance_index = dsearchn(Ci, test_sample);
+    closest_distance_index = dsearchn(C, test_sample);
     
     % Find the corresponding indices in the original training data
-    closest_indices = find(idxi == closest_distance_index);
+    closest_indices = find(idx == closest_distance_index);
     
     % Compute distances from the closest samples in the training data
     distances = dist(trainv(closest_indices,:), test_sample');
