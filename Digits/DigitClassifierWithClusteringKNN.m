@@ -3,27 +3,10 @@
 
 num_classes = 10;
 M = 64;
+K = 7;
 
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
-
-%% Clustering
-
-[classes, ~, idx_train] = unique(trainlab);
-trainv_sorted = splitapply(@(x){x}, trainv, idx_train);
-
-trainlab_cluster = zeros(M*num_classes, 1);
-
-trainv_cluster = zeros(M*num_classes,784);
-for i = 1:num_classes
-    trainlab_cluster(M*(i-1)+1:M*i, 1) = (i-1)*ones(M,1);
-
-    [~, C_i] = kmeans(trainv_sorted{i,1},M);
-    trainv_cluster(M*(i-1)+1:M*i,:) = C_i;
-end
-
-% save('saveTrainvCluster.mat', 'trainv_cluster')
-% save('savetrainlab_cluster.mat', "trainlab_cluster")
 
 %% Classifying
 tic;
@@ -31,8 +14,11 @@ for k = 1:num_test
     targets(testlab(k)+1, k) = 1;
     test_sample = testv(k,:);
     distances =  dist(trainv_cluster, test_sample');
-    [~, closest_distance_index] = min(distances,[],1);
-    outputs(trainlab_cluster(closest_distance_index)+1, k) = 1;
+    [~, indexes_sorted] = sort(distances);
+    K_closest_indexes = indexes_sorted(1:K);
+    K_closest_classes = trainlab_cluster(K_closest_indexes);
+    Most_frequent_class = mode(K_closest_classes);
+    outputs((Most_frequent_class+1), k) = 1;
 
     if mod(k, 500) == 0
         disp(k*100/num_test + "% done")
@@ -40,7 +26,7 @@ for k = 1:num_test
 end
 toc
 
-% save('saveOutputsTask2.mat', "outputs")
+% save('saveOutputsTaskKNN.mat', "outputs")
 % save('saveTargets.mat', "targets")
 
 %Confusion matrix and error rate
