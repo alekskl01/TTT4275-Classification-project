@@ -15,9 +15,16 @@ for k = 1:num_test
         trainv_chunck = trainv((chunck_size*(i-1)+1):chunck_size*i,:);
         distances =  dist(trainv_chunck, test_sample);
         disp(size(distances))
+<<<<<<< HEAD
         [Min_dist,chunck_index] = min(distances,[],1);
         global_index = chunck_size*i + local_index;
         closest_from_chuncks(i,:) = [Min_dist; global_index];
+=======
+        [~,Shortest_index] = min(distances,[],1);
+        Global_index = ...;
+        Estimated_guess_i = trainlab(Global_index);
+        outputs(Estimated_guess_i + 1, i) = 1;
+>>>>>>> 8af423b67ce931a4c5b7a7156fe5f5d5f536e8d2
     end
     [~,I] = min(closest_from_chuncks(:,1),[],2);
     closest_distance_index = closest_from_chuncks(I,2);
