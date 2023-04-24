@@ -14,8 +14,9 @@ for k = 1:num_test
         trainv_chunck = trainv((chunck_size*(i-1)+1):chunck_size*i,:);
         distances =  dist(trainv_chunck, test_sample);
         disp(size(distances))
-        [~,I] = min(distances,[],1);
-
-        
+        [~,Shortest_index] = min(distances,[],1);
+        Global_index = ...;
+        Estimated_guess_i = trainlab(Global_index);
+        outputs(Estimated_guess_i + 1, i) = 1;
     end
 end
