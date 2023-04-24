@@ -9,7 +9,6 @@ tic;
 for k = 1:num_test
     targets(testlab(k)+1, k) = 1;
     test_sample = testv(k,:);
-    closest_from_chuncks = zeros(num_chuncks, 2);
     distances =  dist(trainv, test_sample');
     [~, closest_distance_index] = min(distances,[],1);
     outputs(trainlab(closest_distance_index)+1, k) = 1;
