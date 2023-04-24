@@ -3,25 +3,25 @@
 
 num_classes = 10;
 M = 64;
-K = 7;
+K = 5;
 
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
 
 %% Classifying
 tic;
-for k = 1:num_test
-    targets(testlab(k)+1, k) = 1;
-    test_sample = testv(k,:);
+for i = 1:num_test
+    targets(testlab(i)+1, i) = 1;
+    test_sample = testv(i,:);
     distances =  dist(trainv_cluster, test_sample');
     [~, indexes_sorted] = sort(distances);
     K_closest_indexes = indexes_sorted(1:K);
     K_closest_classes = trainlab_cluster(K_closest_indexes);
     Most_frequent_class = mode(K_closest_classes);
-    outputs((Most_frequent_class+1), k) = 1;
+    outputs((Most_frequent_class+1), i) = 1;
 
-    if mod(k, 500) == 0
-        disp(k*100/num_test + "% done")
+    if mod(i, 500) == 0
+        disp(i*100/num_test + "% done")
     end
 end
 toc
