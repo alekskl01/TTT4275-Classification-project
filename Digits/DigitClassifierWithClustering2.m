@@ -4,10 +4,11 @@
 num_classes = 10;
 M = 64;
 
-% Clustering
+%% Clustering
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
 
+tic;
 [classes, ~, idx_train] = unique(trainlab);
 trainv_sorted = splitapply(@(x){x}, trainv, idx_train);
 
@@ -15,14 +16,13 @@ trainlab_cluster = zeros(M*num_classes, 1);
 
 trainv_cluster = zeros(M*num_classes,784);
 for i = 1:num_classes
-    trainlab_cluster(M*(i-1)+1:M*i, 1) = i*ones(M,1);
+    trainlab_cluster(M*(i-1)+1:M*i, 1) = (i-1)*ones(M,1);
 
     [~, C_i] = kmeans(trainv_sorted{i,1},M);
     trainv_cluster(M*(i-1)+1:M*i,:) = C_i;
 end
 
-%Classifying
-tic;
+%% Classifying
 for k = 1:num_test
     targets(testlab(k)+1, k) = 1;
     test_sample = testv(k,:);
@@ -36,12 +36,7 @@ for k = 1:num_test
 end
 toc
 
-disp(size(targets))
-disp(size(outputs))
-
-% TODO: fix dimentions
-
-save('saveOutputsTask2.mat', "outputs")
+%save('saveOutputsTask2.mat', "outputs")
 %save('saveTargets.mat', "targets")
 
 %Confusion matrix and error rate

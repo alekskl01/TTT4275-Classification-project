@@ -4,7 +4,7 @@
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
 
-%Classifying
+%% Classifying
 tic;
 for k = 1:num_test
     targets(testlab(k)+1, k) = 1;
@@ -19,8 +19,8 @@ for k = 1:num_test
 end
 toc
 
-save('saveOutputsTask1.mat', "outputs")
-save('saveTargets.mat', "targets")
+% save('saveOutputsTask1.mat', "outputs")
+% save('saveTargets.mat', "targets")
 
 %Confusion matrix and error rate
 
