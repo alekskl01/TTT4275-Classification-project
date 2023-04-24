@@ -4,6 +4,19 @@
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
 
+num_classes = 10;
+M = 64;
+
+[classes, ~, idx_train] = unique(trainlab);
+trainv_sorted = splitapply(@(x){x}, trainv, idx_train);
+
+% TODO: fix this
+for i = 1:num_classes
+    [idx, C] = kmeans(trainv_sorted,M);
+end
+
+disp(C)
+
 %Classifying
 tic;
 for k = 1:num_test
@@ -20,7 +33,7 @@ for k = 1:num_test
 end
 toc
 
-save('saveOutputsTask1.mat', "outputs")
+save('saveOutputsTask2.mat', "outputs")
 save('saveTargets.mat', "targets")
 
 %Confusion matrix and error rate
