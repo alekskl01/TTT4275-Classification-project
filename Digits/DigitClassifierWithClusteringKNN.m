@@ -3,7 +3,7 @@
 
 num_classes = 10;
 M = 64;
-K = 5;
+K = 1;
 
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
