@@ -8,7 +8,7 @@ x2all = load('class_2');
 x3all = load('class_3');
 % 
 
-% % Histograms;
+%% Histograms;
 % figure(1)
 % histogram(x1all(:,1), 10);
 % hold on;
@@ -49,18 +49,18 @@ x3all = load('class_3');
 % class_Setosa= x1all;
 % class_Versicolor= x2all;
 % class_Virginica= x3all;
-% 
-% class_Setosa= [x1all(:,1), x1all(:,3), x1all(:,4)];
-% class_Versicolor= [x2all(:,1), x2all(:,3), x2all(:,4)];
-% class_Virginica= [x3all(:,1), x3all(:,3), x3all(:,4)];
+
+class_Setosa= [x1all(:,1), x1all(:,3), x1all(:,4)];
+class_Versicolor= [x2all(:,1), x2all(:,3), x2all(:,4)];
+class_Virginica= [x3all(:,1), x3all(:,3), x3all(:,4)];
 
 % class_Setosa= [x1all(:,3), x1all(:,4)];
 % class_Versicolor= [x2all(:,3), x2all(:,4)];
 % class_Virginica= [x3all(:,3), x3all(:,4)];
 
-class_Setosa= [x1all(:,4)];
-class_Versicolor= [x2all(:,4)];
-class_Virginica= [x3all(:,4)];
+% class_Setosa= [x1all(:,4)];
+% class_Versicolor= [x2all(:,4)];
+% class_Virginica= [x3all(:,4)];
 
 [Ntot,dimx] = size(class_Setosa);
 
@@ -130,9 +130,13 @@ end
 %% Prints and Comparisons
 figure(5);
 plotconfusion(Correct_Answer_Testing, Measured_Answer_Testing, 'Test set');
+xticklabels({'Setosa', 'Versicolor', 'Virginica'})
+yticklabels({'Setosa', 'Versicolor', 'Virginica'})
 
 figure(6);
 plotconfusion(Correct_Answer_Training, Measured_Answer_Training, 'Training set');
+xticklabels({'Setosa', 'Versicolor', 'Virginica'})
+yticklabels({'Setosa', 'Versicolor', 'Virginica'})
 
 %% Functions
 
