@@ -21,8 +21,8 @@ for i = 1:num_classes
     trainv_cluster(M*(i-1)+1:M*i,:) = C_i;
 end
 
-% save('saveTrainvCluster.mat', 'trainv_cluster')
-% save('savetrainlab_cluster.mat', "trainlab_cluster")
+% save('Data/saveTrainvCluster.mat', 'trainv_cluster')
+% save('Data/savetrainlab_cluster.mat', "trainlab_cluster")
 
 %% Classifying
 tic;
@@ -39,8 +39,8 @@ for k = 1:num_test
 end
 toc
 
-% save('saveOutputsTask2.mat', "outputs")
-% save('saveTargets.mat', "targets")
+% save('Data/saveOutputsTask2.mat', "outputs")
+% save('Data/saveTargets.mat', "targets")
 
 %Confusion matrix and error rate
 

@@ -19,8 +19,8 @@ for k = 1:num_test
 end
 toc
 
-% save('saveOutputsTask1.mat', "outputs")
-% save('saveTargets.mat', "targets")
+% save('Data/saveOutputsTask1.mat', "outputs")
+% save('Data/saveTargets.mat', "targets")
 
 %% Plot
 

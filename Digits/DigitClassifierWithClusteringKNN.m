@@ -26,8 +26,8 @@ for i = 1:num_test
 end
 toc
 
-% save('saveOutputsTaskKNN.mat', "outputs")
-% save('saveTargets.mat', "targets")
+% save('Data/saveOutputsTaskKNN.mat', "outputs")
+% save('Data/saveTargets.mat', "targets")
 
 %Confusion matrix and error rate
 figure(1)
