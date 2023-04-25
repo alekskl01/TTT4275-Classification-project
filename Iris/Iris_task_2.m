@@ -44,23 +44,24 @@ x3all = load('class_3');
 % histogram(x3all(:,4), 10);
 % legend('class 1', 'class 2', 'class 3');
 % sgtitle('Feature 4 for all classes') 
+% 
 
 %Parameters that classes are based upon.
 % class_Setosa= x1all;
 % class_Versicolor= x2all;
 % class_Virginica= x3all;
 
-class_Setosa= [x1all(:,1), x1all(:,3), x1all(:,4)];
-class_Versicolor= [x2all(:,1), x2all(:,3), x2all(:,4)];
-class_Virginica= [x3all(:,1), x3all(:,3), x3all(:,4)];
+% class_Setosa= [x1all(:,1), x1all(:,3), x1all(:,4)];
+% class_Versicolor= [x2all(:,1), x2all(:,3), x2all(:,4)];
+% class_Virginica= [x3all(:,1), x3all(:,3), x3all(:,4)];
 
 % class_Setosa= [x1all(:,3), x1all(:,4)];
 % class_Versicolor= [x2all(:,3), x2all(:,4)];
 % class_Virginica= [x3all(:,3), x3all(:,4)];
 
-% class_Setosa= [x1all(:,4)];
-% class_Versicolor= [x2all(:,4)];
-% class_Virginica= [x3all(:,4)];
+class_Setosa= [x1all(:,4)];
+class_Versicolor= [x2all(:,4)];
+class_Virginica= [x3all(:,4)];
 
 [Ntot,dimx] = size(class_Setosa);
 
