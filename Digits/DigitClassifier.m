@@ -22,8 +22,6 @@ toc
 % save('saveOutputsTask1.mat', "outputs")
 % save('saveTargets.mat', "targets")
 
-%Confusion matrix and error rate
-
 %% Plot
 
 num_pictures = 16;
@@ -59,6 +57,7 @@ for n = 1:num_pictures
     title("Correct: " + Correct +", " + "Esimated: " + Estimated)
 end
 
+% Correctly Classified
 figure(2);
 sgtitle("Correctly classified images")
 for n = 1:num_pictures

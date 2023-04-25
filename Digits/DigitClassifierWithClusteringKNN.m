@@ -30,7 +30,6 @@ toc
 % save('saveTargets.mat', "targets")
 
 %Confusion matrix and error rate
-
 figure(1)
 plotconfusion(targets, outputs, 'Classification result');
 xticklabels({'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'})
