@@ -8,12 +8,16 @@ K =7;
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
 
+% Remember to run clustering in DigitClassifierWithClustering.m first
+
 %% Classifying
 tic;
 for i = 1:num_test
     targets(testlab(i)+1, i) = 1;
     test_sample = testv(i,:);
     distances =  dist(trainv_cluster, test_sample');
+
+    % Finds the K closest classes, uses mode() to get the most frequent
     [~, indexes_sorted] = sort(distances);
     K_closest_indexes = indexes_sorted(1:K);
     K_closest_classes = trainlab_cluster(K_closest_indexes);

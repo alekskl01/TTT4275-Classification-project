@@ -15,8 +15,9 @@ hold on;
 histogram(x2all(:,1), 10);
 hold on;
 histogram(x3all(:,1), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 1 for all classes')
+lgd = legend('Setosa', 'Versicolor', 'Virginica');
+fontsize(lgd,14,'points')
+sgtitle('Feature 1 (Sepal length)')
 
 figure(2);
 histogram(x1all(:,2), 10);
@@ -24,8 +25,9 @@ hold on;
 histogram(x2all(:,2), 10);
 hold on;
 histogram(x3all(:,2), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 2 for all classes')  
+lgd = legend('Setosa', 'Versicolor', 'Virginica');
+fontsize(lgd,14,'points')
+sgtitle('Feature 2 (Sepal width)')  
 
 figure(3);
 histogram(x1all(:,3), 10);
@@ -33,8 +35,9 @@ hold on;
 histogram(x2all(:,3), 10);
 hold on;
 histogram(x3all(:,3), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 3 for all classes') 
+lgd = legend('Setosa', 'Versicolor', 'Virginica');
+fontsize(lgd,14,'points')
+sgtitle('Feature 3 (Petal length)') 
 
 figure(4);
 histogram(x1all(:,4), 10);
@@ -42,8 +45,9 @@ hold on;
 histogram(x2all(:,4), 10);
 hold on;
 histogram(x3all(:,4), 10);
-legend('class 1', 'class 2', 'class 3');
-sgtitle('Feature 4 for all classes') 
+lgd = legend('Setosa', 'Versicolor', 'Virginica');
+fontsize(lgd,14,'points')
+sgtitle('Feature 4 (Petal width)') 
 
 
 %Parameters that classes are based upon.
@@ -95,6 +99,7 @@ W = eye(3, dimx+1);
 Alpha = 0.005;
 iterations = 0;
 
+tic;
 while iterations < 30000
     gradientMSE = 0;
     for k = 1:3*N_Training
@@ -107,6 +112,7 @@ while iterations < 30000
     W = W - Alpha*gradientMSE;
     iterations = iterations + 1;
 end
+toc
 
 %% Testing linear Classifier
 for i = 1:length(Tot_Training_Data)

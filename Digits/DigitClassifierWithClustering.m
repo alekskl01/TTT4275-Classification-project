@@ -16,10 +16,13 @@ trainlab_cluster = zeros(M*num_classes, 1);
 trainv_cluster = zeros(M*num_classes,784);
 
 for i = 1:num_classes
+    % Save class of all clusters
     trainlab_cluster(M*(i-1)+1:M*i, 1) = (i-1)*ones(M,1);
+
     [~, C_i] = kmeans(trainv_sorted{i,1},M);
     trainv_cluster(M*(i-1)+1:M*i,:) = C_i;
 end
+
 
 % save('Data/saveTrainvCluster.mat', 'trainv_cluster')
 % save('Data/savetrainlab_cluster.mat', "trainlab_cluster")
@@ -29,6 +32,8 @@ tic;
 for k = 1:num_test
     targets(testlab(k)+1, k) = 1;
     test_sample = testv(k,:);
+    
+    %calculate distance, find index of closest centroid and check its class
     distances =  dist(trainv_cluster, test_sample');
     [~, closest_distance_index] = min(distances,[],1);
     outputs(trainlab_cluster(closest_distance_index)+1, k) = 1;

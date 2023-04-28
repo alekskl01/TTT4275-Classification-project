@@ -31,7 +31,7 @@ correct_plot = zeros(num_pictures, 2);
 
 a = 0;
 b = 0;
-for k = 1:num_test
+for k = 1500:num_test
     output_value = find(outputs(:,k)) - 1;
     if output_value ~= testlab(k) && (a < num_pictures)
         a = a + 1;
@@ -69,7 +69,7 @@ for n = 1:num_pictures
     image(x);
     Correct = testlab(correct_plot(n,1));
     Estimated = correct_plot(n,2);
-    title("Correct: " + Correct +", " + "Esimated: " + Estimated)
+    title("Correct: " + Correct)
 end
 
 
