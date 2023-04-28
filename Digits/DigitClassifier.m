@@ -1,4 +1,4 @@
-%% Classification - Digits 
+%% Classification - Digits
 % By Sigurd von Brandis and Aleksander Klund
 
 outputs = zeros(10, num_test);
