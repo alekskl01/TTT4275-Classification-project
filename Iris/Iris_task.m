@@ -3,9 +3,9 @@
 close all;
 
 %% Load the data
-x1all = load('class_1');
-x2all = load('class_2');
-x3all = load('class_3');
+x1all = load('Delivered/class_1');
+x2all = load('Delivered/class_2');
+x3all = load('Delivered/class_3');
 % 
 
 %% Histograms;
