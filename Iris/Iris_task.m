@@ -146,6 +146,5 @@ yticklabels({'Setosa', 'Versicolor', 'Virginica'})
 
 %Sigmoid function; 
 function y = sigmoidFunction(z)
-    % Compute the sigmoid function
     y = 1./(1 + exp(-z));
 end
