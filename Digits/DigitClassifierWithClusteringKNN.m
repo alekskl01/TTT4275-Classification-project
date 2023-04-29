@@ -8,7 +8,7 @@ K =7;
 outputs = zeros(10, num_test);
 targets = zeros(10, num_test);
 
-% Remember to run clustering in DigitClassifierWithClustering.m first
+% Clustering is done in DigitClassifierWithClustering.m. Remember to run this first.
 
 %% Classifying
 tic;
